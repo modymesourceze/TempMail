@@ -19,7 +19,7 @@ def is_sudo(data):
 
 @app.on_message(filters.command('start'))
 async def START_BOT(_, message: types.Message):
-    join_, channl = await CHECK_USER_JOIN(API_KEY, CHANNLS_BOT, message.from_user.id)
+    join_, channl = await CHECK_USER_JOIN(CHANNLS_BOT, message.from_user.id)
     if not join_:
         await app.send_message(text=ADMIN_MESSAGE['JOIN_CHANLL'].format(channl), reply_markup=KeyboardMarkup.JOIN_CHANLL(channl),chat_id=message.chat.id)
         return 
@@ -45,7 +45,7 @@ async def START_BOT(_, message: types.Message):
 async def CHAECK_JOIN(_, query: types.CallbackQuery):
     await app.edit_message_text(text='انتضر جاري التحقق من الاشتراك ⚙️.', reply_markup=KeyboardMarkup.REDRESH_LANSHER('تحقق من الاشتراك♻️⚙️.'), chat_id=query.message.chat.id, message_id=query.message.id)
     await asyncio.sleep(0.3)
-    join_, channl = await CHECK_USER_JOIN(API_KEY, CHANNLS_BOT, query.from_user.id)
+    join_, channl = await CHECK_USER_JOIN(CHANNLS_BOT, query.from_user.id)
     if not join_:
         await app.edit_message_text(text=ADMIN_MESSAGE['JOIN_CHANLL'].format(channl), reply_markup=KeyboardMarkup.JOIN_CHANLL(channl) ,chat_id= query.message.chat.id, message_id=query.message.id)    
         await app.answer_callback_query(query.id, 'تأكد من اشتراك في القناة و اعد المحاولا ✅〽️.', show_alert=True)  
