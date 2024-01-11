@@ -1,0 +1,8 @@
+{
+   "users": 20,
+   "emils": 20,
+   "admin_setting": {
+      "new_user": true,
+      "new_emil": true
+   }
+}
